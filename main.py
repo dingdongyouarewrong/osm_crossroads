@@ -20,36 +20,47 @@ def extract_intersections(osm, verbose=True):
     tree = ET.parse(osm)
     root = tree.getroot()
     counter = {}
-    i=1
+    breakcycle = True
+    dot_array = []
     for child in root:
         if child.tag == 'way':
             for item in child:
                 try:
+                    # if child.attrib["id"] == "741756616":
+                    #     print("741756616")
+                    #     if item.attrib["k"] == "highway":
+                    #         print("highway")
+                    #
+                    # if child.attrib["id"] == "122923867":
+                    #     print("122923867")
+                    #
+                    #     if len(item.attrib)>1:
+                    #         print("highway")
 
-                    if item.attrib["k"] =="highway" and\
-                        item.attrib["v"] in \
+                    if item.attrib["k"] == "highway" and \
+                            item.attrib["v"] in \
                             ["motorway", "trunk", "primary",
-                                                 "secondary","residential",
+                             "secondary", "residential",
                              "unclassified", "tertiary"
-                                                 "motorway_link", "trunk_link", "primary_link",
-                                                 "secondary_link", "traffic_signals"]:
+                                             "motorway_link", "trunk_link",
+                             "primary_link",
+                             "secondary_link", "traffic_signals"]:
                         breakcycle = False
-                        i+=1
-                        print(i)
+
                         break
                     else:
                         breakcycle = True
-                        break
                 except:
                     breakcycle = True
             if breakcycle:
-                breakcycle=False
+                breakcycle = False
                 continue
-            for item in child:
-                print(item.attrib)
             for item in child:
                 if item.tag == 'nd':
                     nd_ref = item.attrib['ref']
+                    if nd_ref == "275094320":
+                        print("f")
+                    dot_array.append(nd_ref)
                     if not nd_ref in counter:
                         counter[nd_ref] = 0
 
@@ -58,7 +69,6 @@ def extract_intersections(osm, verbose=True):
     # Find nodes that are shared with more than one way, which
     # might correspond to intersections
     intersections = list(filter(lambda x: counter[x] > 1, counter))
-
     # viafrom = []
     # for child in root:
     #     if child.tag == 'relation':
