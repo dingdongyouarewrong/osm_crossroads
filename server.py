@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/get_data', methods=["POST", "GET"])
 def ready():
     # data = request.get_json()
-    f = open("/Users/dmitry/PycharmProjects/osm_crossroads/gomel.json")
+    f = open("/gomel.json")
     coordinates = json.load(f)
     f.close()
     print("awdawd")
