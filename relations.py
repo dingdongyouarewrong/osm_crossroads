@@ -1,5 +1,5 @@
 intersection_coordinates = []
-osm = "map_big.osm"
+osm = "map_gomel"
 
 import pandas as pd
 try:
@@ -10,7 +10,6 @@ except ImportError as e:
 
 tree = ET.parse(osm)
 root = tree.getroot()
-dataframe_coordinates = pd.DataFrame(columns=["longitude", "latitude"])
 relations = []
 for child in root:
     if child.tag == 'relation':
@@ -22,6 +21,7 @@ for child in root:
                     relations.append(item.attrib["ref"])
             except:
                 continue
+dataframe_coordinates = pd.DataFrame(columns=["longitude", "latitude"])
 
 for child in root:
     if child.tag == 'node' and \
@@ -29,8 +29,13 @@ for child in root:
         coordinate = child.attrib['lat'] + ',' + child.attrib['lon']
         if coordinate not in intersection_coordinates:
             print(coordinate + ",1,#ffc1dc")
+            print(child.attrib['lon'])
+            print(child.attrib['lat'])
+            dataframe_coordinates = dataframe_coordinates.append({
+                "latitude":child.attrib['lat'],
+                                          "longitude":child.attrib['lon']},
+                                         ignore_index=True)
             intersection_coordinates.append(coordinate)
-# Extract intersection coordinates
-# You can plot the result using this url.
-# http://www.darrinward.com/lat-long/
+dataframe_coordinates.to_csv("maps/relations_gomel.csv")
+
 intersection_coordinates = []
