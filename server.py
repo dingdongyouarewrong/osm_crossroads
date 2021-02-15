@@ -1,4 +1,6 @@
 import json
+import os
+import sys
 
 from flask import Flask, jsonify
 
@@ -13,6 +15,5 @@ def ready():
     print("awdawd")
     return jsonify(coordinates)
 
-
-app.run()
+app.run(host="0.0.0.0", port=os.environ["PORT"])
 
