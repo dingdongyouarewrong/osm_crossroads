@@ -40,4 +40,4 @@ def get_data_by_city():
     print("awdawd")
     return jsonify(coordinates)
 
-app.run(host="0.0.0.0")
+app.run(host="0.0.0.0", port=os.environ["PORT"])
