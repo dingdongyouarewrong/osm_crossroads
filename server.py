@@ -17,7 +17,7 @@ def scum():
         # if_mac = addrs[nif.AF_LINK][0]['addr']
         # if_ip = addrs[nif.AF_INET][0]['addr']
         print(addrs)
-    return render_template('hello.html')
+    return render_template({"404":"error"})
 
 @app.route('/get_data', methods=["POST", "GET"])
 def get_data():
