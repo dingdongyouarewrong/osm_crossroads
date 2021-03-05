@@ -21,7 +21,7 @@ def get_data_by_city():
     city = request.args.get('city')
     print(city)
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    filename = str(dir_path) + f"json_geodata/{city}.json"
+    filename = str(dir_path) + f"/json_geodata/{city}.json"
     f = open(filename)
     coordinates = json.load(f)
     f.close()
