@@ -38,8 +38,6 @@ def extract_intersections(osm, verbose=True):
             for item in child:
                 if item.tag == 'nd':
                     nd_ref = item.attrib['ref']
-                    if nd_ref == "275094320":
-                        print("f")
                     dot_array.append(nd_ref)
                     if not nd_ref in counter:
                         counter[nd_ref] = 0
@@ -67,9 +65,9 @@ def extract_intersections(osm, verbose=True):
                 print(coordinate + ",1,#F18111")
             intersection_coordinates.append(coordinate)
 
-    dataframe_coordinates.to_csv("crossroads_gomel.csv")
+    dataframe_coordinates.to_csv("geodata/crossroads_vitebsk.csv")
 
     return intersection_coordinates
 
 
-extract_intersections("maps/map_gomel", verbose=True)
+extract_intersections("maps/map_vitebsk", verbose=True)
