@@ -1,8 +1,8 @@
 import pandas as pd
 
-dataf1 = pd.read_csv("geodata/relations_vitebsk.csv")
-dataf2 = pd.read_csv("geodata/traffic_signals_vitebsk.csv")
-dataf3 = pd.read_csv("geodata/crossroads_vitebsk.csv")
+dataf1 = pd.read_csv("./geodata/relations_grodno.csv")
+dataf2 = pd.read_csv("./geodata/traffic_signals_grodno.csv")
+dataf3 = pd.read_csv("./geodata/crossroads_grodno.csv")
 
 dataf1 = dataf1.append(dataf2).append(dataf3)
 
@@ -20,6 +20,6 @@ for coordinate_lat, coordinate_lon in zip(data_dict["longitude"].values(), data_
     final_data_dict.setdefault(coordinate_lat, coordinate_lon)
 
 import json
-with open("/Users/dmitry/PycharmProjects/osm_crossroads/json_geodata/vitebsk.json",
+with open("./json_geodata/grodno.json",
           "w") as f:
     json.dump(final_data_dict, f)

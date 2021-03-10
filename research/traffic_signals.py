@@ -1,5 +1,5 @@
 intersection_coordinates = []
-osm = "maps/map_vitebsk"
+osm = "maps/map_grodno"
 import pandas as pd
 
 try:
@@ -27,4 +27,4 @@ for child in root:
                 print(coordinate + ",1,#79FE2D")
                 break
 
-dataframe_coordinates.to_csv("geodata/traffic_signals_vitebsk.csv")
+dataframe_coordinates.to_csv("geodata/traffic_signals_grodno.csv")

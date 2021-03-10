@@ -1,5 +1,5 @@
 intersection_coordinates = []
-osm = "maps/map_vitebsk"
+osm = "maps/map_grodno"
 
 import pandas as pd
 try:
@@ -36,6 +36,6 @@ for child in root:
                                           "longitude":child.attrib['lon']},
                                          ignore_index=True)
             intersection_coordinates.append(coordinate)
-dataframe_coordinates.to_csv("geodata/relations_vitebsk.csv")
+dataframe_coordinates.to_csv("geodata/relations_grodno.csv")
 
 intersection_coordinates = []

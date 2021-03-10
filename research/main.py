@@ -65,9 +65,9 @@ def extract_intersections(osm, verbose=True):
                 print(coordinate + ",1,#F18111")
             intersection_coordinates.append(coordinate)
 
-    dataframe_coordinates.to_csv("geodata/crossroads_vitebsk.csv")
+    dataframe_coordinates.to_csv("geodata/crossroads_grodno.csv")
 
     return intersection_coordinates
 
 
-extract_intersections("maps/map_vitebsk", verbose=True)
+extract_intersections("maps/map_grodno", verbose=True)
